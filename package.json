@@ -1,0 +1,39 @@
+{
+  "name": "tomox-notification",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --cache ./ --ext .vue --ext .js",
+    "dev": "./node_modules/.bin/nodemon index.js --ext '*'",
+    "start": "node index.js"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bignumber.js": "^9.0.0",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.5.0",
+    "helmet": "^3.23.0",
+    "js-yaml": "^3.14.0",
+    "moment": "^2.26.0",
+    "mongodb": "^3.5.9",
+    "morgan": "^1.10.0",
+    "swagger-ui-express": "^4.1.4",
+    "tomoxjs": "^0.5.7",
+    "url-join": "^4.0.1",
+    "web3": "^1.2.9",
+    "winston": "^3.2.1",
+    "ws": "^7.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "nodemon": "^2.0.4"
+  },
+  "author": "",
+  "license": "MIT"
+}
