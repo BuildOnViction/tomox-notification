@@ -35,13 +35,13 @@ async function run() {
 
             TomoWallet.sendNotify(
                 borrower,
-                `tomochain:dapp?url=${config.tomoscan.uri}/lending/trade/${data.fullDocument.hash}`,
+                `tomochain:dapp?url=${config.tomoscan.uri}/lending/trades/${data.fullDocument.hash}`,
                 'TRADE | TomoX P2P Lending',
                 'You have a new p2p lending contract'
             )
             TomoWallet.sendNotify(
                 investor,
-                `tomochain:dapp?url=${config.tomoscan.uri}/lending/trade/${data.fullDocument.hash}`,
+                `tomochain:dapp?url=${config.tomoscan.uri}/lending/trades/${data.fullDocument.hash}`,
                 'TRADE | TomoX P2P Lending',
                 'You have a new p2p lending contract'
             )
@@ -63,13 +63,13 @@ async function run() {
 
             TomoWallet.sendNotify(
                 borrower,
-                `tomochain:dapp?url=${config.tomoscan.uri}/lending/trade/${data.fullDocument.hash}`,
+                `tomochain:dapp?url=${config.tomoscan.uri}/lending/trades/${data.fullDocument.hash}`,
                 'TRADE | TomoX P2P Lending',
                 `Your p2p lending contract is ${status}`
             )
             TomoWallet.sendNotify(
                 investor,
-                `tomochain:dapp?url=${config.tomoscan.uri}/lending/trade/${data.fullDocument.hash}`,
+                `tomochain:dapp?url=${config.tomoscan.uri}/lending/trades/${data.fullDocument.hash}`,
                 'TRADE | TomoX P2P Lending',
                 `Your p2p lending contract is ${status}`
             )
