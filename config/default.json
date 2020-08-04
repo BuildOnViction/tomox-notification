@@ -3,8 +3,20 @@
         "host": "0.0.0.0",
         "port": 3000
     },
+    "mongodb": {
+        "uri": "'mongodb://127.0.0.1:27017/tomodex?replicaSet=rs0"
+    },
     "logs": {
         "level": "debug"
+    },
+    "relayers": [
+        {
+            "address": "0x0D3ab14BBaD3D99F4203bd7a11aCB94882050E7e",
+            "domain": "https://dex.tomochain.com"
+        }
+    ],
+    "tomoscan": {
+        "uri": "https://scan.tomochain.com"
     },
     "tomowallet": {
         "uri": "https://apiwallet.tomochain.com",
