@@ -65,7 +65,7 @@ async function run() {
                 borrower,
                 `tomochain:dapp?url=${config.tomoscan.uri}/lending/trade/${data.fullDocument.hash}`,
                 'TRADE | TomoX P2P Lending',
-                `Your new p2p lending contract is ${status}`
+                `Your p2p lending contract is ${status}`
             )
             TomoWallet.sendNotify(
                 investor,
