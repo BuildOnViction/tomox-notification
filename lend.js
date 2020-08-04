@@ -2,6 +2,7 @@ const MongoClient = require('mongodb').MongoClient
 const TomoWallet = require('./services/tomowallet')
 const config = require('config')
 const _ = require('lodash')
+const moment = require('moment')
 
 const uri = config.get('mongodb.uri')
 const insert_pipeline = [
@@ -25,6 +26,10 @@ async function run() {
 	let con = await MongoClient.connect(uri, { useUnifiedTopology: true })
 	con.db('tomodex').collection('lending_trades').watch(insert_pipeline)
 		.on('change', (data) => {
+            let delay = moment().diff(moment(data.fullDocument.updatedAt), 'seconds')
+            if (delay > 30) {
+                return false
+            }
             let borrower = data.fullDocument.borrower
             let investor = data.fullDocument.investor
 
@@ -51,6 +56,10 @@ async function run() {
             if (status !== 'CLOSED' && status !== 'LIQUIDATED') {
                 return false
             }
+            let delay = moment().diff(moment(data.fullDocument.updatedAt), 'seconds')
+            if (delay > 30) {
+                return false
+            }
 
             TomoWallet.sendNotify(
                 borrower,
@@ -70,6 +79,11 @@ async function run() {
 	con.db('tomodex').collection('lending_repays').watch(insert_pipeline)
 		.on('change', (data) => {
             let tradeHash = data.fullDocument.hash
+
+            let delay = moment().diff(moment(data.fullDocument.updatedAt), 'seconds')
+            if (delay > 30) {
+                return false
+            }
 
             con.db('tomodex').collection('lending_trades').findOne({
                 hash: tradeHash
@@ -103,6 +117,11 @@ async function run() {
 		.on('change', (data) => {
             let tradeHash = data.fullDocument.hash
 
+            let delay = moment().diff(moment(data.fullDocument.updatedAt), 'seconds')
+            if (delay > 30) {
+                return false
+            }
+
             con.db('tomodex').collection('lending_trades').findOne({
                 hash: tradeHash
             }, (err, result) => {
@@ -133,6 +152,11 @@ async function run() {
 	con.db('tomodex').collection('lending_recalls').watch(insert_pipeline)
 		.on('change', (data) => {
             let tradeHash = data.fullDocument.hash
+
+            let delay = moment().diff(moment(data.fullDocument.updatedAt), 'seconds')
+            if (delay > 30) {
+                return false
+            }
 
             con.db('tomodex').collection('lending_trades').findOne({
                 hash: tradeHash
